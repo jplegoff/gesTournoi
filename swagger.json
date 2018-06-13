@@ -1,0 +1,110 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "No description",
+    "version" : "1.0.0",
+    "title" : "1st workshop",
+    "contact" : { }
+  },
+  "host" : "hg88g6j.apihive.com",
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "security" : [ {
+    "Basic authentication" : [ ]
+  } ],
+  "paths" : {
+    "/api/people/{id}/" : {
+      "get" : {
+        "summary" : "Retrieve Star wars character",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "$ref" : "#/definitions/Character"
+            }
+          }
+        },
+        "security" : [ {
+          "Basic authentication" : [ ]
+        } ]
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string",
+        "description" : "Id of the character",
+        "x-example" : "1"
+      } ],
+      "x-restlet" : {
+        "section" : "People"
+      }
+    },
+    "/api/people/" : {
+      "get" : {
+        "tags" : [ "myTag2" ],
+        "summary" : "List all characters",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Character"
+              }
+            }
+          }
+        }
+      },
+      "x-restlet" : {
+        "section" : "People"
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "Basic authentication" : {
+      "type" : "basic"
+    },
+    "OAuth2" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "",
+      "tokenUrl" : "",
+      "flow" : "accessCode",
+      "scopes" : { }
+    }
+  },
+  "definitions" : {
+    "Character" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "height" : {
+          "type" : "string",
+          "description" : "Height in cm",
+          "minLength" : 0,
+          "maxLength" : 300
+        }
+      },
+      "x-restlet" : {
+        "section" : "People"
+      }
+    },
+    "csdmcsdkmc" : {
+      "type" : "object",
+      "x-restlet" : {
+        "section" : "People"
+      }
+    }
+  },
+  "x-restlet" : {
+    "sections" : {
+      "People" : { },
+      "Planet" : { }
+    }
+  }
+}
